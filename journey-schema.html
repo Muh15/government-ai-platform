@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06101b">
+<title>HAYAH — Journey Schema & Rules Engine 4.4</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#06101b;color:#edf6fa;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial}body{padding:18px 18px calc(90px + env(safe-area-inset-bottom));}.wrap{max-width:1180px;margin:auto}.top{display:flex;justify-content:space-between;gap:14px;align-items:flex-end;margin-bottom:16px}.eyebrow{font-size:11px;font-weight:900;letter-spacing:1.5px;color:#72e7ca}.title{font-size:clamp(28px,5vw,46px);font-weight:950;line-height:1.05;margin:5px 0}.sub{color:#9fb5c2;max-width:760px;line-height:1.8;font-size:14px}.badge{border:1px solid #31536d;background:#0c2031;border-radius:999px;padding:9px 12px;font-size:11px;font-weight:900;color:#cfe0ea;white-space:nowrap}.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.card{background:linear-gradient(180deg,#0b1d2c,#091826);border:1px solid #1f4058;border-radius:18px;padding:15px;box-shadow:0 15px 40px #0006}.hd{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.hd strong{font-size:15px}.tag{font-size:10px;color:#8eaaba;border:1px solid #25475f;border-radius:999px;padding:5px 8px}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.step{border:1px solid #24485f;border-radius:14px;padding:12px;background:#0b2232;min-height:92px}.step b{display:block;font-size:13px;margin-bottom:7px}.step span{color:#9fb5c2;font-size:11px;line-height:1.6}.active{border-color:#4d9c8d;background:#0c2a2d}.flow{margin-top:12px;display:grid;gap:8px}.node{display:grid;grid-template-columns:120px 1fr;gap:10px;align-items:start;border:1px solid #23445b;border-radius:14px;padding:11px;background:#081a28}.node .k{font-size:10px;color:#74e8c9;font-weight:900}.node .v{font-size:12px;color:#dceaf0;line-height:1.65}.rule{border:1px solid #25475f;border-radius:14px;padding:12px;background:#0b2130;margin-bottom:8px}.rule:last-child{margin-bottom:0}.rule .topr{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px}.rule code{font-size:11px;color:#8de8d0;direction:ltr;display:inline-block}.rule .why{color:#9fb5c2;font-size:11px;line-height:1.6}.result{border:1px solid #4a8d81;background:#0d2a2b;border-radius:14px;padding:13px;margin-top:10px}.result h3{margin:0 0 6px;font-size:14px}.result p{margin:0;color:#b7cbd4;font-size:11px;line-height:1.7}.kv{display:grid;grid-template-columns:1fr 1fr;gap:8px}.kv .item{border:1px solid #23445b;border-radius:12px;padding:10px;background:#081a28}.kv small{display:block;color:#8da5b3;font-size:10px;margin-bottom:4px}.kv b{font-size:12px}.btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.btn{border:1px solid #355b72;background:#10283a;color:#eff7fb;border-radius:13px;padding:12px;font-weight:900;font-size:12px;cursor:pointer;text-align:center}.btn.primary{background:#63e6c5;color:#052019;border-color:#b8ffec}.btn:active{transform:scale(.98)}.footer{margin-top:12px;color:#718a98;font-size:10px;line-height:1.7}.mono{direction:ltr;text-align:left;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.json{white-space:pre-wrap;border:1px solid #203f55;border-radius:13px;background:#06141f;padding:12px;color:#b8d9d0;font:11px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;direction:ltr;text-align:left;min-height:180px}.pulse{animation:pulse .7s ease}@keyframes pulse{50%{box-shadow:0 0 0 6px #63e6c51a}}
+@media(max-width:850px){.grid{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){body{padding:14px 12px calc(110px + env(safe-area-inset-bottom))}.top{display:block}.badge{display:inline-block;margin-top:10px}.title{font-size:32px}.steps{grid-template-columns:1fr 1fr}.node{grid-template-columns:92px 1fr}.btns{grid-template-columns:1fr}.sub{font-size:13px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <div class="eyebrow">HAYAH 4.4 · JOURNEY SCHEMA</div>
+      <div class="title">Journey Schema + Rules Engine</div>
+      <div class="sub">نقلنا الرحلة من زر تجريبي إلى نموذج يمكن تفسيره وتنفيذه: حدث → سياق → قواعد → استحقاق → رحلة → توقيت → إجراء → تدقيق.</div>
+    </div>
+    <div class="badge">SYNTHETIC / PRODUCT SIMULATION</div>
+  </div>
+
+  <div class="card">
+    <div class="hd"><strong>Journey Execution Graph</strong><span class="tag" id="stateTag">READY</span></div>
+    <div class="steps" id="steps">
+      <div class="step active"><b>1. Event</b><span>حدث حياتي موثوق يدخل المنصة.</span></div>
+      <div class="step"><b>2. Context</b><span>هوية + موافقة + سمات مصرح بها.</span></div>
+      <div class="step"><b>3. Rules</b><span>تقييم قواعد قابلة للتفسير.</span></div>
+      <div class="step"><b>4. Eligibility</b><span>الخدمات التي تنطبق على الحالة.</span></div>
+    </div>
+    <div class="flow" id="flow"></div>
+  </div>
+
+  <div class="grid" style="margin-top:14px">
+    <div class="card">
+      <div class="hd"><strong>Rule Set · جاني مولود</strong><span class="tag">v1.3</span></div>
+      <div id="rules"></div>
+      <div class="result" id="result"><h3>قرار الاستحقاق</h3><p>جاهز لتقييم الحالة.</p></div>
+      <div class="btns"><button class="btn primary" id="run">تشغيل Rule Evaluation</button><button class="btn" id="reset">إعادة الحالة</button></div>
+    </div>
+
+    <div class="card">
+      <div class="hd"><strong>Canonical Journey Object</strong><span class="tag">JSON-like</span></div>
+      <div class="json" id="json"></div>
+      <div class="kv" style="margin-top:10px">
+        <div class="item"><small>Owner</small><b>Journey Governance</b></div>
+        <div class="item"><small>Version</small><b>birth.v1.3</b></div>
+        <div class="item"><small>State</small><b id="state">DRAFT</b></div>
+        <div class="item"><small>Audit</small><b>Required</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="hd"><strong>Execution Result</strong><span class="tag">Event → Action</span></div>
+    <div class="kv">
+      <div class="item"><small>Eligible Services</small><b id="services">—</b></div>
+      <div class="item"><small>Recommended Timing</small><b id="timing">—</b></div>
+      <div class="item"><small>Journey State</small><b id="journeyState">Awaiting evaluation</b></div>
+      <div class="item"><small>Audit Event</small><b id="audit">Not emitted</b></div>
+    </div>
+  </div>
+
+  <div class="footer">هذه صفحة محاكاة لمنتج HAYAH. البيانات والقواعد والنتائج اصطناعية لأغراض العرض وليست تكاملًا فعليًا مع الأنظمة الحكومية أو قرارًا حكوميًا حقيقيًا.</div>
+</div>
+<script>
+const rules=[
+ {id:'R-101',cond:'event.type == "BIRTH"',desc:'الحدث هو ولادة مسجلة ضمن سياق الرحلة.',pass:true},
+ {id:'R-204',cond:'context.consent == true',desc:'المواطن منح موافقة لاستخدام السياق المصرح به.',pass:true},
+ {id:'R-315',cond:'context.newbornCount >= 1',desc:'يوجد مولود جديد ضمن سياق الحالة التجريبي.',pass:true},
+ {id:'R-401',cond:'context.residency == "ACTIVE"',desc:'حالة الإقامة فعالة في بيانات العرض.',pass:true}
+];
+const flowData=[
+ ['Event','BIRTH · source=life-event','حدث حياتي: جاني مولود'],
+ ['Context','citizen=demo-1042 · consent=true','سياق هوية وموافقة وسمات مصرح بها'],
+ ['Rules','birth.v1.3 · owner=Journey Governance','تمرير 4/4 قواعد تفسيرية'],
+ ['Eligibility','3 service candidates','حزمة خدمات مؤهلة في النموذج التجريبي'],
+ ['Journey','birth.onboarding.v1','ترتيب الخطوات وحالة التنفيذ'],
+ ['Timing','MAWED · مركز قريب · 09:00','توقيت موصى به لتخفيف الضغط'],
+ ['Action','SERVICE_REQUEST · SR-20481','إجراء خدمة تم إنشاؤه للنظام التجريبي'],
+ ['Audit','AUD-8F21 · immutable log','تم تسجيل سبب القرار والمدخلات والإصدار']
+];
+function renderRules(){document.getElementById('rules').innerHTML=rules.map(r=>`<div class="rule"><div class="topr"><code>${r.id}</code><span class="tag">${r.pass?'PASS':'FAIL'}</span></div><code>${r.cond}</code><div class="why">${r.desc}</div></div>`).join('')}
+function renderFlow(active=false){document.getElementById('flow').innerHTML=flowData.map((x,i)=>`<div class="node ${active?'pulse':''}"><div class="k">${x[0]}</div><div class="v"><b>${x[1]}</b><br>${x[2]}</div></div>`).join('')}
+function renderJson(state='DRAFT'){
+ const obj={journeyId:'birth.onboarding.v1',event:{type:'BIRTH',source:'life-event',timestamp:'2026-09-04T10:20:00Z'},context:{citizenId:'demo-1042',consent:true,newbornCount:1,residency:'ACTIVE'},ruleset:{id:'birth.v1.3',version:3,owner:'Journey Governance'},state,eligibleServices:['إضافة المولود','تحديث السجل الأسري','مراجعة الاستحقاقات'],timing:{engine:'MAWED',recommendation:'09:00',center:'مركز تجريبي شمالي'},action:{type:'SERVICE_REQUEST',id:'SR-20481'},audit:{required:true,eventId:'AUD-8F21'}};
+ document.getElementById('json').textContent=JSON.stringify(obj,null,2);
+}
+function run(){
+ document.getElementById('stateTag').textContent='EVALUATED';
+ document.getElementById('state').textContent='READY';
+ document.getElementById('result').innerHTML='<h3>قرار الاستحقاق: ELIGIBLE</h3><p>تم اجتياز 4 من 4 قواعد. ظهرت 3 خدمات مؤهلة لأن الحدث والسياق والشروط متوافقة مع Rule Set birth.v1.3.</p>';
+ document.getElementById('services').textContent='3 خدمات';
+ document.getElementById('timing').textContent='09:00 · مركز تجريبي';
+ document.getElementById('journeyState').textContent='READY_FOR_ACTION';
+ document.getElementById('audit').textContent='AUD-8F21 emitted';
+ renderJson('READY_FOR_ACTION');renderFlow(true);
+}
+function reset(){
+ document.getElementById('stateTag').textContent='READY';document.getElementById('state').textContent='DRAFT';
+ document.getElementById('result').innerHTML='<h3>قرار الاستحقاق</h3><p>جاهز لتقييم الحالة.</p>';
+ ['services','timing','journeyState','audit'].forEach((id,i)=>document.getElementById(id).textContent=['—','—','Awaiting evaluation','Not emitted'][i]);
+ renderJson();renderFlow(false);
+}
+renderRules();renderJson();renderFlow();
+document.getElementById('run').onclick=run;document.getElementById('reset').onclick=reset;
+</script>
+</body>
+</html>
